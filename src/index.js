@@ -16,7 +16,7 @@ const path2 = resolvePath(filepath2)
 }
 
 function resolvePath (filepath) {
-    return filepath.includes('fixtures') ? filepath : path.resolve() + `/__fixtures__/${filepath}`
+    return filepath.includes('fixtures') ? filepath : `${path.resolve()}/__fixtures__/${filepath}`
 }
 
 function getDiff(obj1, obj2) {
