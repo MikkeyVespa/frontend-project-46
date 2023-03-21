@@ -1,4 +1,5 @@
 import { Command } from 'commander';
+import showDiff from '../src/index.js';
 const program = new Command();
 
 program
@@ -8,6 +9,6 @@ program
   .argument('<filepath1>')
   .argument('<filepath2>')
   .option('-f, --format <type>',  'output format')
-  .action((filepath1, filepath2) => console.log(filepath1, filepath2))
+  .action(showDiff)
 
   program.parse();
