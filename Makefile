@@ -3,3 +3,9 @@ install:
 
 run:
 	node bin/gendiff.js file1.json file2.json
+
+test:
+	npm test
+
+lint:
+	npx eslint .
