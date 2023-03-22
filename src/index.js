@@ -9,17 +9,17 @@ function resolvePath(filepath) {
 function getDiff(obj1, obj2) {
   const keys = _.union(Object.keys(obj1), Object.keys(obj2)).sort();
   const result = ['{'];
-  for (const key of keys) {
-    if (Object.hasOwn(obj1, key) && !Object.hasOwn(obj2, key)) {
-      result.push(`  - ${key}: ${obj1[key]}`);
-    } else if (!Object.hasOwn(obj1, key) && Object.hasOwn(obj2, key)) {
-      result.push(`  + ${key}: ${obj2[key]}`);
-    } else if (Object.hasOwn(obj1, key) && Object.hasOwn(obj2, key)) {
-      if (obj1[key] === obj2[key]) {
-        result.push(`    ${key}: ${obj1[key]}`);
-      } else if (obj1[key] !== obj2[key]) {
-        result.push(`  - ${key}: ${obj1[key]}`);
-        result.push(`  + ${key}: ${obj2[key]}`);
+  for (let i = 0; i < keys.length; i += 1) {
+    if (Object.hasOwn(obj1, keys[i]) && !Object.hasOwn(obj2, keys[i])) {
+      result.push(`  - ${keys[i]}: ${obj1[keys[i]]}`);
+    } else if (!Object.hasOwn(obj1, keys[i]) && Object.hasOwn(obj2, keys[i])) {
+      result.push(`  + ${keys[i]}: ${obj2[keys[i]]}`);
+    } else if (Object.hasOwn(obj1, keys[i]) && Object.hasOwn(obj2, keys[i])) {
+      if (obj1[keys[i]] === obj2[keys[i]]) {
+        result.push(`    ${keys[i]}: ${obj1[keys[i]]}`);
+      } else if (obj1[keys[i]] !== obj2[keys[i]]) {
+        result.push(`  - ${keys[i]}: ${obj1[keys[i]]}`);
+        result.push(`  + ${keys[i]}: ${obj2[keys[i]]}`);
       }
     }
   }
