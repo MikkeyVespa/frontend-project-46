@@ -2,7 +2,7 @@ install:
 	npm ci
 
 run:
-	node bin/gendiff.js file1.json file2.json
+	node bin/gendiff.js ./__fixtures__/file1.yaml ./__fixtures__/file2.yaml
 
 test:
 	npm test
