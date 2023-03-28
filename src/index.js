@@ -1,36 +1,20 @@
 import path from 'node:path';
-import _ from 'lodash';
 import parser from './parsers.js';
+import buildAST from './buildAST.js';
+import formatter from './formatters/index.js';
 
-const resolvePath = (filepath) => path.resolve(process.cwd(), filepath);
+const resolvePath = (filepath) => (filepath.includes('__fixtures__')
+  ? path.resolve(process.cwd(), filepath)
+  : path.resolve(process.cwd(), (`__fixtures__/${filepath}`))
+);
 
-function getDiff(obj1, obj2) {
-  const keys = _.union(Object.keys(obj1), Object.keys(obj2)).sort();
-  const result = ['{'];
-  for (let i = 0; i < keys.length; i += 1) {
-    if (Object.hasOwn(obj1, keys[i]) && !Object.hasOwn(obj2, keys[i])) {
-      result.push(`  - ${keys[i]}: ${obj1[keys[i]]}`);
-    } else if (!Object.hasOwn(obj1, keys[i]) && Object.hasOwn(obj2, keys[i])) {
-      result.push(`  + ${keys[i]}: ${obj2[keys[i]]}`);
-    } else if (Object.hasOwn(obj1, keys[i]) && Object.hasOwn(obj2, keys[i])) {
-      if (obj1[keys[i]] === obj2[keys[i]]) {
-        result.push(`    ${keys[i]}: ${obj1[keys[i]]}`);
-      } else if (obj1[keys[i]] !== obj2[keys[i]]) {
-        result.push(`  - ${keys[i]}: ${obj1[keys[i]]}`);
-        result.push(`  + ${keys[i]}: ${obj2[keys[i]]}`);
-      }
-    }
-  }
-  result.push('}');
-  return result.join('\n');
-}
-
-export default function showDiff(filepath1, filepath2) {
+export default function showDiff(filepath1, filepath2, format = 'stylish') {
   const path1 = resolvePath(filepath1);
   const path2 = resolvePath(filepath2);
 
-  const data1 = parser(path1);
-  const data2 = parser(path2);
+  const obj1 = parser(path1);
+  const obj2 = parser(path2);
 
-  return getDiff(data1, data2);
+  const AST = buildAST(obj1, obj2);
+  return formatter(AST, format);
 }
