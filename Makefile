@@ -4,9 +4,6 @@ install:
 run:
 	node bin/gendiff.js file1.json ./__fixtures__/file2.json
 
-run2:
-	node bin/gendiff.js -f plain file1copy.json file2copy.json
-
 test:
 	npm test
 
