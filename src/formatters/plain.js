@@ -1,9 +1,20 @@
 import _ from 'lodash';
 
-const checkNull = (name) => (!name ? 'null' : '[complex value]');
-const checkString = (name) => (typeof name === 'boolean' ? `${name}` : `'${name}'`);
-const checkVal = (name) => (typeof name === 'object' ? checkNull(name) : checkString(name));
 const getPath = (nodeNames) => nodeNames.flat().join('.');
+
+const checkVal = (value) => {
+  switch (typeof value) {
+    case 'object': {
+      return !value ? 'null' : '[complex value]';
+    }
+    case 'string': {
+      return `'${value}'`;
+    }
+    default: {
+      return `${value}`;
+    }
+  }
+};
 
 export function makePlainDiff(tree) {
   console.log(tree);
