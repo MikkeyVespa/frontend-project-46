@@ -1,7 +1,7 @@
 import _ from 'lodash';
 
 const buildAST = (data1, data2) => {
-  const keys = _.union(Object.keys(data1), Object.keys(data2)).sort();
+  const keys = _.sortBy(_.union(Object.keys(data1), Object.keys(data2)));
 
   const children = keys.map((key) => {
     if (!_.has(data1, key)) {
