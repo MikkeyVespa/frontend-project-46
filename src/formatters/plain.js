@@ -17,7 +17,6 @@ const checkVal = (value) => {
 };
 
 export function makePlainDiff(tree) {
-  console.log(tree);
   const iter = (node, path) => node.map((child) => {
     const currentPath = getPath([path, child.key]);
     switch (child.type) {
