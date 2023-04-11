@@ -2,6 +2,9 @@
   "name": "@hexlet/code",
   "version": "1.0.0",
   "description": "[![Actions Status](https://github.com/MikkeyVespa/frontend-project-46/workflows/hexlet-check/badge.svg)](https://github.com/MikkeyVespa/frontend-project-46/actions)",
+  "bin": {
+    "gendiff": "bin/gendiff.js"
+  },
   "main": "./src/index.js",
   "type": "module",
   "scripts": {
