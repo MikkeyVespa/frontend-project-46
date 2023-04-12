@@ -15,4 +15,4 @@ Utility features:
 -Report generation in the form of plain text, stylish and json
 
 ### Program example:
-<a href="https://asciinema.org/a/576995" target="_blank"><img src="https://asciinema.org/a/576995.svg" /></a>
+<a href="https://asciinema.org/a/576997" target="_blank"><img src="https://asciinema.org/a/576997.svg" /></a>
