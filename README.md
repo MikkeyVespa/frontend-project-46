@@ -14,5 +14,5 @@ Utility features:
 -Support for different input formats: yaml, json
 -Report generation in the form of plain text, stylish and json
 
-### Program example:
+### Example of the program:
 <a href="https://asciinema.org/a/576997" target="_blank"><img src="https://asciinema.org/a/576997.svg" /></a>
